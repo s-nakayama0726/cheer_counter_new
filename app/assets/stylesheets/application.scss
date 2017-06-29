@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.wakarimi_count {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  font-size: 200px;
+  margin-top: -45px;
+  margin-left: -50px;
+}
+
+.heart {
+	font-size: 300px;
+	color: #FF3D67;
+	-webkit-animation: heart-beats .3s infinite alternate;
+  animation: heart-beats .3s infinite alternate;
+	transform-origin: center;
+}
+
+/* Animation Setting */
+@-webkit-keyframes heart-beats {
+	to { -webkit-transform: scale(1.1); }
+}
+@keyframes heart-beats {
+	to { transform: scale(1.1); }
+}
+
+/* Basic style */
+body {
+  text-align: center;
+}
+h1 {
+  font-family: 'Chewy', cursive;
+  margin-top: 0;
+  color: #FF9EB6;
+}
