@@ -2,15 +2,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
-    @cheers = Cheer.all
+    @now_playing_user = Player.now_playing_users.first
+    @cheers = @now_playing_user.cheers
   end
 
   def post_cheer
-    Cheer.create
+    player = Player.now_playing_users.first
+    cheer = player.cheers.build
+    cheer.save
   end
 
   def get_cheers
-    @cheers = Cheer.all
+    @cheers = Player.now_playing_users.first.cheers
   end
 
   def client
