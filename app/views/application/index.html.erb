@@ -10,7 +10,15 @@ function refresh(){
 }
 
 $(function(){
-  $('h1').css('color','orange')
+  $('h1').css('color','orange');
+
+  $(document).snowfall({
+  	image: "heart.png",
+	flakeCount: 5,
+	minSize: 60,
+	maxSize: 70,
+	round: false,
+  });
 
   refresh();
  
@@ -25,4 +33,6 @@ $(function(){
 </p>
 <br />
 <br />
-
+<div class="marquee">
+	<p>現在　Aさん　がプレイ中です。</p>
+</div>
