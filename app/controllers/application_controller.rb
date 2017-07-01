@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @now_playing_user = Player.now_playing_users.first
-    @cheers = @now_playing_user.cheers
+    @cheers = @now_playing_user.cheers if @now_playing_user
   end
 
   def post_cheer
@@ -17,5 +17,19 @@ class ApplicationController < ActionController::Base
   end
 
   def client
+  end
+
+  def stanby
+  end
+ 
+  def get_status
+    now_playing_user = Player.now_playing_users.first
+    if now_playing_user
+      status = {status: "playing"}
+      render :json => status and return
+    else
+      status = {status: "stanby"}
+      render :json => status and return
+    end
   end
 end

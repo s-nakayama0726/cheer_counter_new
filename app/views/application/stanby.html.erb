@@ -1,0 +1,26 @@
+<script type="text/javascript">
+function get_status(){
+    $.ajax({
+      url: '/get_status',
+      type: 'GET',
+      success: function(json){
+        if(json.status == "playing"){
+          window.location.href = "/";
+        }
+      }
+    });
+    setTimeout(get_status, 1000);
+}
+
+$(function(){
+  get_status();
+
+});
+</script>
+
+
+<br /><br />
+<div class="marquee">
+  <p>現在準備中です。プレイ開始まで少々お待ちください。</p>
+</div>
+

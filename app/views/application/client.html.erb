@@ -1,3 +1,19 @@
+
+
+<script type="text/javascript">
+$(function(){
+    $("#sorena").on({
+        "click":function(){
+            $(this).addClass("animated bounceOutUp");
+        },
+        "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend":function(){
+            $(this).removeClass("animated bounceOutUp");
+        }
+    });
+});
+</script>
+
+
 <%= form_tag(url_for(:action => "post_cheer"), :remote => true ) do %>
-        <%= submit_tag "add_cheer" %>
+        <input type="image" src="sorena.png" id="sorena">
 <% end %>
