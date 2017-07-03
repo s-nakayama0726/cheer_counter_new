@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/client" => "application#client"
   get "/stanby" => "application#stanby"
   get "/get_status" => "application#get_status"
+  get "/get_message" => "application#get_message"
 
   post "/manage/start_playing" => "manage#start_playing"
   post "/manage/stop_playing" => "manage#stop_playing"

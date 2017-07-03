@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def post_cheer
     player = Player.now_playing_users.first
     cheer = player.cheers.build
+    cheer.message = params[:message]
     cheer.save
   end
 
@@ -31,5 +32,10 @@ class ApplicationController < ActionController::Base
       status = {status: "stanby"}
       render :json => status and return
     end
+  end
+
+  def get_message
+    @cheers = Player.now_playing_users.first.cheers
+    @message = @cheers.last.message
   end
 end

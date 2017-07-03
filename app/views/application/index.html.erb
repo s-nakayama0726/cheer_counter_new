@@ -1,5 +1,7 @@
 <script type="text/javascript">
 
+$(function(){
+var count = 1;
 
 function get_status(){
     $.ajax({
@@ -13,16 +15,26 @@ function get_status(){
     });
 }
 
-function refresh(){
-    get_status();   
+function get_message(){
     $.ajax({
-    	url: '/get_cheers',
+      url: '/get_message',
+      type: 'GET'
+    });
+}
+
+
+function refresh(){
+    get_status();
+    if(count % 10 == 0){
+      get_message();
+    }
+    $.ajax({
+        url: '/get_cheers',
         type: 'GET'
     });
     setTimeout(refresh, 1000);
+    count++;
 }
-
-$(function(){
 
   $(document).snowfall({
   	image: "heart.png",
@@ -45,8 +57,9 @@ $(function(){
 <%= render :partial =>  "count" %>
 </span>
 </p>
-<br />
-<br />
+<div id="message">
+<%= render :partial => "message" %>
+</div>
 <div class="marquee">
 	<p>現在　<%= @now_playing_user.player_name %>　がプレイ中です。</p>
 </div>

@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  $(function(){
+        setInterval(function(){
+                $('.left_balloon').removeClass("animated slideInRight");
+		$('.left_balloon').addClass("animated flipOutX");
+	}, 7000);
+ });
+</script>
+
+<% if @message %>
+<p class="left_balloon animated slideInRight">
+<img src="someone.png" id="someone">
+<%= @message %>
+</p>
+<% end %>
