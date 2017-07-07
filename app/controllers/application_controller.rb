@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def post_cheer
     player = Player.now_playing_users.first
     cheer = player.cheers.build
-    cheer.message = params[:message]
+    #cheer.message = params[:message]
     cheer.save
   end
 
