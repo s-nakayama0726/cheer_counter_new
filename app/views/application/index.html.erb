@@ -25,9 +25,11 @@ function get_message(){
 
 function refresh(){
     get_status();
+/*
     if(count % 10 == 0){
       get_message();
     }
+*/
     $.ajax({
         url: '/get_cheers',
         type: 'GET'
@@ -35,14 +37,6 @@ function refresh(){
     setTimeout(refresh, 1000);
     count++;
 }
-
-  $(document).snowfall({
-  	image: "heart.png",
-	flakeCount: 5,
-	minSize: 60,
-	maxSize: 70,
-	round: false,
-  });
 
   refresh();
 
@@ -57,9 +51,11 @@ function refresh(){
 <%= render :partial =>  "count" %>
 </span>
 </p>
+<!--
 <div id="message">
 <%= render :partial => "message" %>
 </div>
+-->
 <div class="marquee">
 	<p>現在　<%= @now_playing_user.player_name %>　がプレイ中です。</p>
 </div>
