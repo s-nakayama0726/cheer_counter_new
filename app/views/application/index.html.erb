@@ -10,6 +10,8 @@ function get_status(){
       success: function(json){
         if(json.status == "stanby"){
           window.location.href = "/stanby";
+        } else if(json.status == "fever"){
+          window.location.href = "/fever";
         }
       }
     });
@@ -65,17 +67,6 @@ function rect() {
 <%= render :partial =>  "count" %>
 </span>
 </p>
-
-<% if @cheers.count > 50 %>
-<div id="wrapper">
-	<canvas id="canv"></canvas>
-</div>
-<div id="fever_time">
-	<img src="takamari_dj.png" id="takamari_dj" class="animated infinite">
-	<img src="fever.png" id="fever">
-</div>
-<script src="light_ball.js"></script>
-<% end %>
 
 <!--
 <div id="message">

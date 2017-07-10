@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
     @now_playing_user = Player.now_playing_users.first
     @cheers = @now_playing_user.cheers if @now_playing_user
   end
+  
+  def fever
+    @now_playing_user = Player.now_playing_users.first
+    @cheers = @now_playing_user.cheers if @now_playing_user
+  end
 
   def post_cheer
     player = Player.now_playing_users.first
@@ -26,8 +31,13 @@ class ApplicationController < ActionController::Base
   def get_status
     now_playing_user = Player.now_playing_users.first
     if now_playing_user
-      status = {status: "playing"}
-      render :json => status and return
+      if now_playing_user.cheers.count > 50
+        status = {status: "fever"}
+        render :json => status and return
+      else
+        status = {status: "playing"}
+        render :json => status and return
+      end
     else
       status = {status: "stanby"}
       render :json => status and return
