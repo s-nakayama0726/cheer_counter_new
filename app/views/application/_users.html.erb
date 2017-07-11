@@ -1,0 +1,28 @@
+<% if @users %>
+<table>
+<thead>
+<tr class="thead_text">
+<td>オタク名</td>
+<td>分かりみの数</td>
+</tr>
+</thead>
+<tbody>
+<% @users.each_with_index do | user, idx | %>
+<% if idx > 12 %>
+	<% break %>
+<% end %>
+<% if idx % 2 == 0 %>
+<tr>
+<td><span class="highlight1"><%= user.user_name %></span></td>
+<td><span class="highlight1"><%= user.cheers.count %></span></td>
+</tr>
+<% else %>
+<tr>
+<td><span class="highlight2"><%= user.user_name %></span></td>
+<td><span class="highlight2"><%= user.cheers.count %></span></td>
+</tr>
+<% end %>
+<% end %>
+</tbody>
+</table>
+<% end %>

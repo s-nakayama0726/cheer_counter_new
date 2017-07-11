@@ -17,26 +17,15 @@ function get_status(){
     });
 }
 
-function get_message(){
-    $.ajax({
-      url: '/get_message',
-      type: 'GET'
-    });
-}
-
 
 function refresh(){
     get_status();
-/*
-    if(count % 10 == 0){
-      get_message();
-    }
-*/
+    
     $.ajax({
         url: '/get_cheers',
         type: 'GET'
     });
-    setTimeout(refresh, 1000);
+    setTimeout(refresh, 3000);
     count++;
 }
 
@@ -68,11 +57,11 @@ function rect() {
 </span>
 </p>
 
-<!--
-<div id="message">
-<%= render :partial => "message" %>
+
+<div id="users">
+<%= render :partial => "users" %>
 </div>
--->
+
 <div class="marquee">
 	<p>現在　<%= @now_playing_user.player_name %>　がプレイ中です。</p>
 </div>

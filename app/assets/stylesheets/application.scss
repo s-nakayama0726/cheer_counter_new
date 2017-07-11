@@ -19,6 +19,34 @@ body {
   overflow:hidden;
 }
 
+@font-face {
+  font-family: users-font;
+  src: url("/HuiFont29.woff") format("woff");
+}
+
+#users {
+  font-family: users-font;
+  font-size: 30px;
+  top: 100px;
+  position: absolute;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.highlight1 {
+    background: linear-gradient(transparent 50%, #ffff00 0%);
+    line-height: 1.3em;
+}
+
+.highlight2 {
+    background: linear-gradient(transparent 50%, #7cfc00 0%);
+    line-height: 1.3em;
+}
+
+.thead_text {
+  font-size: 15px;
+}
+
 .wakarimi_count {
   position: absolute;
   top: 30%;

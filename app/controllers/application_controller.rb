@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def index
+  def master
     @now_playing_user = Player.now_playing_users.first
     @cheers = @now_playing_user.cheers if @now_playing_user
+    @users = User.all
   end
   
   def fever
@@ -11,18 +12,9 @@ class ApplicationController < ActionController::Base
     @cheers = @now_playing_user.cheers if @now_playing_user
   end
 
-  def post_cheer
-    player = Player.now_playing_users.first
-    cheer = player.cheers.build
-    #cheer.message = params[:message]
-    cheer.save
-  end
-
   def get_cheers
     @cheers = Player.now_playing_users.first.cheers
-  end
-
-  def client
+    @users = User.all.sort{|a, b| b.cheers.count <=> a.cheers.count }
   end
 
   def stanby
@@ -42,10 +34,5 @@ class ApplicationController < ActionController::Base
       status = {status: "stanby"}
       render :json => status and return
     end
-  end
-
-  def get_message
-    @cheers = Player.now_playing_users.first.cheers
-    @message = @cheers.last.message
   end
 end
