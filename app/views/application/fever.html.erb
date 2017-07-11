@@ -1,0 +1,92 @@
+<script type="text/javascript">
+
+$(function(){
+var count = 1;
+
+function get_status(){
+    $.ajax({
+      url: '/get_status',
+      type: 'GET',
+      success: function(json){
+        if(json.status == "stanby"){
+          window.location.href = "/stanby";
+        }
+      }
+    });
+}
+
+function get_message(){
+    $.ajax({
+      url: '/get_message',
+      type: 'GET'
+    });
+}
+
+
+function refresh(){
+    get_status();
+/*
+    if(count % 10 == 0){
+      get_message();
+    }
+*/
+    $.ajax({
+        url: '/get_cheers',
+        type: 'GET'
+    });
+    setTimeout(refresh, 1000);
+    count++;
+}
+
+function rect() {
+    $('#fever_time').animate({
+        marginTop: '-=80px'
+    }, 300).animate({
+        marginTop: '+=80px'
+    }, 300);
+    setInterval('rect()', 1000); //アニメーションを繰り返す間隔
+}
+
+  refresh();
+  setInterval(rect, 1000); //アニメーションを実行
+ 
+
+    
+});
+
+</script>
+
+
+
+
+<% if @now_playing_user %>
+<p class="wakarimi_count heart">
+<span id="counter">
+<%= render :partial =>  "count" %>
+</span>
+</p>
+
+<div id="wrapper">
+	<canvas id="canv"></canvas>
+</div>
+<div id="fever_time">
+	<img src="takamari_dj.png" id="takamari_dj" class="animated infinite">
+	<img src="fever.png" id="fever">
+</div>
+<script src="light_ball.js"></script>
+
+<!--
+<div id="message">
+<%= render :partial => "message" %>
+</div>
+-->
+<div class="marquee">
+	<p>現在　<%= @now_playing_user.player_name %>　がプレイ中です。</p>
+</div>
+<% else %>
+<br /><br />
+<div class="marquee">
+  <p>現在準備中です。プレイ開始まで少々お待ちください。</p>
+</div>
+<% end %>
+
