@@ -27,6 +27,16 @@ class ManageController < ApplicationController
   	redirect_to :action => "index"
   end
   
+  def delete_players
+    Player.all.each do | player |
+      player.cheers.delete_all
+      player.delete
+    end
+  	
+  	redirect_to :action => "index"
+  
+  end
+  
   def result
     players = Player.all
     pleyers_name = players.collect{|player| player.player_name; }
