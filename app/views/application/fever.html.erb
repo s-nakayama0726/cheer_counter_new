@@ -38,18 +38,7 @@ function refresh(){
     count++;
 }
 
-function rect() {
-    $('#fever_time').animate({
-        marginTop: '-=80px'
-    }, 300).animate({
-        marginTop: '+=80px'
-    }, 300);
-    setInterval('rect()', 1000); //アニメーションを繰り返す間隔
-}
-
   refresh();
-  setInterval(rect, 1000); //アニメーションを実行
- 
 
     
 });
