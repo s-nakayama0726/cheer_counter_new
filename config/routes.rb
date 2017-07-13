@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   post "/manage/stop_playing" => "manage#stop_playing"
   get "/manage/index" => "manage#index"
   get "/manage/delete_users" => "manage#delete_users"
+  get "/manage/result" => "manage#result"
 end
