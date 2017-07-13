@@ -1,8 +1,9 @@
-名前を入れてください。
-
 <div id="login_form">
+<img src="test.png">
+<p class="input_invite">ようこそガチ恋ガーデンへ！</p>
+<p class="input_invite">オタク名を入力してください</p>
 <%= form_tag(url_for(:action => "user_create") ) do %>
-    <input type="text" id="user_name"  name="user_name">
-	<input type="submit" value="登録">
+    <input type="text" id="user_name"  name="user_name"><br /><br />
+	<button type="submit" id="regist">登録</button>
 <% end %>
 </div>
