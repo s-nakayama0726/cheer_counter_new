@@ -17,5 +17,14 @@ class ManageController < ApplicationController
 
     redirect_to :action => "index"
   end
+  
+  def delete_users
+  	User.all.each do | user |
+  	  user.cheers.delete_all
+  	  user.delete
+  	end
+  	
+  	redirect_to :action => "index"
+  end
 
 end
