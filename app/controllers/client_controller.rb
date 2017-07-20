@@ -1,6 +1,6 @@
 class ClientController < ApplicationController
 
-  def client
+  def index
     unless session[:user_id]
       redirect_to :action => "user_login"
     end
@@ -8,7 +8,7 @@ class ClientController < ApplicationController
   
   def user_login
     if session[:user_id]
-      redirect_to :action => "client"
+      redirect_to :action => "index"
     end
   end
       
@@ -20,7 +20,7 @@ class ClientController < ApplicationController
     session[:user_name] = user.user_name
     session[:user_id] = user.id
     
-    redirect_to :action => "client"
+    redirect_to :action => "index"
   end
 
   def post_cheer

@@ -18,7 +18,7 @@ $(function(){
 <p class="client_guide">ようこそ <%= session[:user_name] %> さん！！</p>
 <p class="client_guide">それなボタンを押して分かりみを伝えよう！！</p>
 <br />
-<%= form_tag(url_for(:action => "post_cheer"), :remote => true ) do %>
+<%= form_tag(url_for(:action => "/client/post_cheer"), :remote => true ) do %>
 <!-- <input type="text" id="message"  name="message"> -->
 	<input type="image" src="sorena.png" id="sorena">
 <% end %>

@@ -4,25 +4,31 @@ Rails.application.routes.draw do
   root :to => "client#user_login"
   
   # master
-  get "/master" => "application#master"
-  get "/get_cheers" => "application#get_cheers"
-  get "/stanby" => "application#stanby"
-  get "/get_status" => "application#get_status"
-  get "/get_message" => "application#get_message"
-  get "/fever" => "application#fever"
-  get "/get_users" => "application#get_users"
+  namespace :master do
+    get "index"
+    get "get_cheers"
+    get "stanby"
+    get "get_status"
+    get "get_message"
+    get "fever"
+    get "get_users"
+  end
 
   # client
-  get "/client" => "client#client"
-  get "/user_login" => "client#user_login"
-  post "/user_create" => "client#user_create"
-  post "/post_cheer" => "client#post_cheer"
+  namespace :client do
+    get "index"
+    get "user_login"
+    post "user_create"
+    post "post_cheer"
+  end
   
   # manage
-  post "/manage/start_playing" => "manage#start_playing"
-  post "/manage/stop_playing" => "manage#stop_playing"
-  get "/manage/index" => "manage#index"
-  get "/manage/delete_users" => "manage#delete_users"
-  get "/manage/delete_players" => "manage#delete_players"
-  get "/manage/result" => "manage#result"
+  namespace :manage do
+    post "start_playing"
+    post "stop_playing"
+    get "index"
+    get "delete_users"
+    get "delete_players"
+    get "result"
+  end
 end
