@@ -1,11 +1,11 @@
 <script type="text/javascript">
 function get_status(){
     $.ajax({
-      url: '/get_status',
+      url: '/master/get_status',
       type: 'GET',
       success: function(json){
         if(json.status == "playing"){
-          window.location.href = "/master";
+          window.location.href = "/master/index";
         }
       }
     });
@@ -23,4 +23,3 @@ $(function(){
 <div class="marquee">
   <p>現在準備中です。プレイ開始まで少々お待ちください。</p>
 </div>
-

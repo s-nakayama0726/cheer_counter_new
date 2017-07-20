@@ -5,13 +5,13 @@ var count = 1;
 
 function get_status(){
     $.ajax({
-      url: '/get_status',
+      url: '/master/get_status',
       type: 'GET',
       success: function(json){
         if(json.status == "stanby"){
-          window.location.href = "/stanby";
+          window.location.href = "/master/stanby";
         } else if(json.status == "fever"){
-          window.location.href = "/fever";
+          window.location.href = "/master/fever";
         }
       }
     });
@@ -22,7 +22,7 @@ function refresh(){
     get_status();
     
     $.ajax({
-        url: '/get_cheers',
+        url: '/master/get_cheers',
         type: 'GET'
     });
     setTimeout(refresh, 3000);
@@ -50,7 +50,7 @@ function rect() {
 
 
 
-<% if @now_playing_user %>
+<% if @now_playing_player %>
 <p class="wakarimi_count heart">
 <span id="counter">
 <%= render :partial =>  "count" %>
@@ -63,7 +63,7 @@ function rect() {
 </div>
 
 <div class="marquee">
-	<p>現在　<%= @now_playing_user.player_name %>　がプレイ中です。</p>
+	<p>現在　<%= @now_playing_player.name %>　がプレイ中です。</p>
 </div>
 <% else %>
 <br /><br />
@@ -71,4 +71,3 @@ function rect() {
   <p>現在準備中です。プレイ開始まで少々お待ちください。</p>
 </div>
 <% end %>
-

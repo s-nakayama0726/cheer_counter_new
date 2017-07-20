@@ -14,20 +14,19 @@ class ClientController < ApplicationController
       
   def user_create
     user = User.new
-    user.user_name = params[:user_name]
+    user.name = params[:user_name]
     user.save
     
-    session[:user_name] = user.user_name
+    session[:user_name] = user.name
     session[:user_id] = user.id
     
     redirect_to :action => "index"
   end
 
   def post_cheer
-    player = Player.now_playing_users.first
+    player = Player.now_playing_player
     cheer = player.cheers.build
     cheer.user_id = session[:user_id]
-    #cheer.message = params[:message]
     cheer.save
   end
 

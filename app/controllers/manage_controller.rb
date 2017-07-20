@@ -1,6 +1,6 @@
 class ManageController < ApplicationController
   def index
-    @now_playing_user = Player.now_playing_users.first
+    @now_playing_player = Player.now_playing_player
   end
 
   def stop_playing
@@ -11,7 +11,7 @@ class ManageController < ApplicationController
 
   def start_playing
     player = Player.new
-    player.player_name = params[:name]
+    player.name = params[:name]
     player.play_flg = 1
     player.save
 
@@ -39,7 +39,7 @@ class ManageController < ApplicationController
   
   def result
     players = Player.all
-    pleyers_name = players.collect{|player| player.player_name; }
+    pleyers_name = players.collect{|player| player.name; }
     player_got_wakarimi = players.collect{|player| player.cheers.count; }
     # グラフ（チャート）を作成 
     @each_dj_chart = LazyHighCharts::HighChart.new("graph") do |c|
