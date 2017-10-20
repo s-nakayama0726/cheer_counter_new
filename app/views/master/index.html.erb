@@ -49,23 +49,24 @@ function rect() {
 
 
 
-
 <% if @now_playing_player %>
-<p class="wakarimi_count heart">
-<span id="counter">
-<%= render :partial =>  "count" %>
-</span>
-</p>
-
-
-<div id="users">
-<%= render :partial => "users" %>
-</div>
-
 <div class="marquee">
 	<p>現在　<%= @now_playing_player.name %>　がプレイ中です。</p>
 </div>
+<div class="container main">
+	<div class="row">
+		<div class="col-md-12 centered count"><%= render :partial =>  "count" %></div>
+	</div><!-- /row -->
+	<div class="row">
+		<div class="col-md-12 centered sub">--wakarimi--</div>
+	</div><!-- /row -->
+	<div class="row">
+		<div class="col-md-12 centered sub heart">♡</div>
+	</div><!-- /row -->
+</div> <!-- /container -->
+
 <% else %>
+
 <br /><br />
 <div class="marquee">
   <p>現在準備中です。プレイ開始まで少々お待ちください。</p>

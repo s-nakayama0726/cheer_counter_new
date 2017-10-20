@@ -1,5 +1,7 @@
 class MasterController < ApplicationController
 
+  layout "master_application"
+
   def index
     @now_playing_player = Player.now_playing_player
     @cheers = @now_playing_player.cheers if @now_playing_player
