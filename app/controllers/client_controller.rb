@@ -1,5 +1,7 @@
 class ClientController < ApplicationController
 
+  layout "client_application"
+
   def index
     unless session[:user_id]
       redirect_to :action => "user_login"

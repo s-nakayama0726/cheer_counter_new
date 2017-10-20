@@ -1,0 +1,84 @@
+
+
+<script type="text/javascript">
+$(function(){
+    $(".wakarimi-btn").on({
+        "click":function(){
+            $("#sorena").addClass("animated bounceOutUp");
+            $(".wakarimi-btn").prop("disabled", true);
+            setTimeout(function(){
+        		$("#sorena").removeClass("animated bounceOutUp");
+        		$(".wakarimi-btn").prop("disabled", false);
+    		},1000);
+        },
+        "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend":function(){
+            $("#sorena").removeClass("animated bounceOutUp");
+        }
+    });
+});
+</script>
+
+
+<div id="client_contents">
+
+	<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+    <div class="row">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		    <div class="col-xs-6 col-md-3">
+		      <img width="115px" height="65px" src="/assets/img/gachi-logo.png">
+		    </div>
+		    <div class="col-xs-6 col-md-3" height="100px">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+		    </div>
+		</div>
+</div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    <br>
+	 <%= session[:user_name] %> さん！<br>
+	ようこそガチ恋ガーデンへ！<br>
+	<hr>
+	現在の参加中のオタク：<br>
+	テストさん、テストさん、テストさん、テストさん、テストさん、テストさん
+	<hr>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	    <div class="container main">
+	    	<div class="row">
+	    		<div class="col-xs-12 centered">
+	    			<img id="sorena" width="200px" height="200px" src="/assets/img/sore.png" class="img-responsive center-block">
+	    		</div><!-- /col-lg-8 -->
+	    	</div><!-- /row -->
+	    </div> <!-- /container -->
+	    
+	    	    <div class="container btn-area">
+	        <div class="row">
+	        	<div class="col-xs-12 centered">
+	    				<h2>wakaru!</h2>
+	    		</div><!-- /col-lg-8 -->
+	    	</div>
+	    	<div class="row">
+	    		<div class="col-xs-12 centered">
+	    			<div class="button__holder">
+    				<%= form_tag(client_post_cheer_path, :remote => true ) do %>
+					<%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+	    				<button type="submit" class="wakarimi-btn">♡</button>
+	    			<% end %>
+					</div>
+	    		</div><!-- /col-lg-8 -->
+	    	</div><!-- /row -->
+	    </div>
+	</div>
+</div>
