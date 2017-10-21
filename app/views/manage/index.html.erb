@@ -1,10 +1,10 @@
-<% if @now_playing_user %>
-現在 <%= @now_playing_user.player_name %>さんがプレイ中です
+<% if @now_playing_player %>
+現在 <%= @now_playing_player.name %>さんがプレイ中です
 <% else %>
 現在は誰もプレイしていません
 <% end %>
 
-<% unless @now_playing_user %>
+<% unless @now_playing_player %>
 <%= form_tag("/manage/start_playing", method: "post") do %>
   <%= text_field_tag(:name) %>
 	<%= submit_tag("start!") %>
