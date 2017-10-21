@@ -27,9 +27,12 @@ class ClientController < ApplicationController
 
   def post_cheer
     player = Player.now_playing_player
-    cheer = player.cheers.build
-    cheer.user_id = session[:user_id]
-    cheer.save
+    
+    if player
+      cheer = player.cheers.build
+      cheer.user_id = session[:user_id]
+      cheer.save
+    end
   end
 
 end
