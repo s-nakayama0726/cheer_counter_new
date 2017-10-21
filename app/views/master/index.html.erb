@@ -10,8 +10,6 @@ function get_status(){
       success: function(json){
         if(json.status == "stanby"){
           window.location.href = "/master/stanby";
-        } else if(json.status == "fever"){
-          window.location.href = "/master/fever";
         }
       }
     });
@@ -55,7 +53,7 @@ function rect() {
 </div>
 <div class="container main">
 	<div class="row">
-		<div class="col-md-12 centered count"><%= render :partial =>  "count" %></div>
+		<div id="counter" class="col-md-12 centered count"><%= render :partial =>  "count" %></div>
 	</div><!-- /row -->
 	<div class="row">
 		<div class="col-md-12 centered sub">--wakarimi--</div>

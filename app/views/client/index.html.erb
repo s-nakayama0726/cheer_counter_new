@@ -5,11 +5,9 @@ $(function(){
     $(".wakarimi-btn").on({
         "click":function(){
             $("#sorena").addClass("animated bounceOutUp");
-            $(".wakarimi-btn").prop("disabled", true);
             setTimeout(function(){
-        		$("#sorena").removeClass("animated bounceOutUp");
-        		$(".wakarimi-btn").prop("disabled", false);
-    		},1000);
+        		  $("#sorena").removeClass("animated bounceOutUp");
+    		    },1000);
         },
         "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend":function(){
             $("#sorena").removeClass("animated bounceOutUp");
@@ -48,8 +46,19 @@ $(function(){
 	 <%= session[:user_name] %> さん！<br>
 	ようこそガチ恋ガーデンへ！<br>
 	<hr>
-	現在の参加中のオタク：<br>
-	テストさん、テストさん、テストさん、テストさん、テストさん、テストさん
+	<% users = User.all %>
+	現在参加中のオタク：<br>
+	<% users.each_with_index do |user, idx| %>
+	  <% if users.size != idx + 1 %>
+	    <%= user.name %>、
+	  <% else %>
+	    <%= user.name %>
+	  <% end %>
+	<% end %>
+	<hr>
+	<a href="/timetable.jpg" target="_blank">タイムテーブル</a>
+	<hr>
+	<a href="/flyer.jpg" target="_blank">フライヤー</a>
 	<hr>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->

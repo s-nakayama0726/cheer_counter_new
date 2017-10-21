@@ -14,7 +14,7 @@ class MasterController < ApplicationController
   end
 
   def get_cheers
-    @cheers = Player.now_playing_player
+    @cheers = Player.now_playing_player.cheers
     @users = User.all.sort{|a, b| b.cheers.count <=> a.cheers.count }
   end
 
@@ -24,13 +24,8 @@ class MasterController < ApplicationController
   def get_status
     now_playing_player = Player.now_playing_player
     if now_playing_player
-      if now_playing_player.cheers.count > 50
-        status = {status: "fever"}
-        render :json => status and return
-      else
-        status = {status: "playing"}
-        render :json => status and return
-      end
+      status = {status: "playing"}
+      render :json => status and return
     else
       status = {status: "stanby"}
       render :json => status and return
