@@ -43,10 +43,19 @@ $(function(){
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <br>
+  <% users = User.all %>
+  <% player = Player.now_playing_player %>
 	 <%= session[:user_name] %> さん！<br>
 	ようこそガチ恋ガーデンへ！<br>
 	<hr>
-	<% users = User.all %>
+	現在プレイ中のオタク：<br>
+	<% if player %>
+	  <%= player.name %><br>
+	  ( 現在の獲得分かりみ数　<%= player.cheers.count %>  )<br> 
+	<% else %>
+	  現在準備中です。プレイ開始まで少々お待ちください。
+	<% end %>
+	<hr>
 	現在参加中のオタク：<br>
 	<% users.each_with_index do |user, idx| %>
 	  <% if users.size != idx + 1 %>
