@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get "user_login"
     post "user_create"
     post "post_cheer"
+    get "countdown"
   end
   
   # manage

@@ -34,5 +34,8 @@ class ClientController < ApplicationController
       cheer.save
     end
   end
+  
+  def countdown
+  end
 
 end

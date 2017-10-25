@@ -1,0 +1,51 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: Bolt - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+ 
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+
+/* OVERALL ASPECT */
+
+body {
+	background-color: white;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    
+}
+
+.yycountdown-box .yyc-day{
+  font-size:3.0em;
+  color:#0085C7;
+}
+.yycountdown-box .yyc-hou{
+  font-size:3.0em;
+  color:#F4C300;
+}
+.yycountdown-box .yyc-min{
+  font-size:3.0em;
+  color:#009F3D;
+}
+.yycountdown-box .yyc-sec{
+  font-size:3.0em;
+  color:#DF0024;
+}
+
+ 
+.yycountdown-box .yyc-day-text,
+.yycountdown-box .yyc-hou-text,
+.yycountdown-box .yyc-min-text,
+.yycountdown-box .yyc-sec-text{
+  font-size:1.0em;
+}
