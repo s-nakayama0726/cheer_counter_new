@@ -35,7 +35,4 @@ class ClientController < ApplicationController
     end
   end
   
-  def countdown
-  end
-
 end
