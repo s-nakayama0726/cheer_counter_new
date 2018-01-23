@@ -16,6 +16,9 @@ class MasterController < ApplicationController
   def get_cheers
     @cheers = Player.now_playing_player.cheers
     @users = User.all.sort{|a, b| b.cheers.count <=> a.cheers.count }
+    
+    status = {counter: @cheers.count, step_status: -1}
+    render :json => status and return
   end
 
   def stanby

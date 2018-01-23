@@ -35,6 +35,108 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+.meter {
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	height: 2em;
+}
+
+.level20 {
+	background-color: orangered;
+	width: 25em;
+}
+
+.level19 {
+	background-color: orangered;
+	width: 23em;
+}
+
+.level18 {
+	background-color: orangered;
+	width: 21em;
+}
+
+.level17 {
+	background-color: orange;
+	width: 19em;
+}
+
+.level16 {
+	background-color: orange;
+	width: 17em;
+}
+
+.level15 {
+	background-color: orange;
+	width: 15em;
+}
+
+.level14 {
+	background-color: orange;
+	width: 13em;
+}
+
+.level13 {
+	background-color: lime;
+	width: 11em;
+}
+
+.level12 {
+	background-color: lime;
+	width: 10em;
+}
+
+.level11 {
+	background-color: lime;
+	width: 9em;
+}
+
+.level10 {
+	background-color: lime;
+	width: 8em;
+}
+
+.level9 {
+	background-color: lime;
+	width: 7em;
+}
+
+.level8 {
+	background-color: royalblue;
+	width: 6em;
+}
+
+.level7 {
+	background-color: royalblue;
+	width: 5em;
+}
+
+.level6 {
+	background-color: royalblue;
+	width: 4em;
+}
+
+.level5 {
+	background-color: royalblue;
+	width: 3em;
+}
+
+.level4 {
+	background-color: royalblue;
+	width: 2em;
+}
+
+.level3 {
+	background-color: royalblue;
+	width: 1em;
+}
+
+.blank {
+	background-color: transparent;
+}
+
 .container .count {
    margin-top: 100px;
    font-size: 300px;

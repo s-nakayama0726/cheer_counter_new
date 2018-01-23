@@ -21,45 +21,64 @@ function refresh(){
     
     $.ajax({
         url: '/master/get_cheers',
-        type: 'GET'
+        type: 'GET',
+        success: function(json){
+          var step_status=json.step_status;
+          var counter = json.counter;
+          var current_level;
+          current_level = $(".current_level").data("level");
+          if(step_status == "1"){
+            $(".current_level").removeClass("current_level");
+            current_level += 1;
+            $(".level"+current_level).addClass("current_level");
+            $(".level"+current_level).removeClass("blank");
+          } else if(step_status == "-1"){
+            $(".current_level").addClass("blank");
+            $(".current_level").removeClass("current_level");
+            current_level = current_level - 1;
+            $(".level"+current_level).addClass("current_level");
+          };
+          
+          $("#counter").text(counter);
+        }
     });
+    
     setTimeout(refresh, 3000);
     count++;
 }
-
-function rect() {
-    $('#fever_time').animate({
-        marginTop: '-=80px'
-    }, 300).animate({
-        marginTop: '+=80px'
-    }, 300);
-    setInterval('rect()', 1000); //アニメーションを繰り返す間隔
-}
-
-  refresh();
-  setInterval(rect, 1000); //アニメーションを実行
- 
-
-    
+refresh();
 });
 
 </script>
 
+<div class="container">
 
+</div> <!-- /container -->
 
 <% if @now_playing_player %>
-<div class="marquee">
-	<p>現在　<%= @now_playing_player.name %>　がプレイ中です。</p>
-</div>
+<br><br><br>
 <div class="container main">
-	<div class="row">
-		<div id="counter" class="col-md-12 centered count"><%= render :partial =>  "count" %></div>
-	</div><!-- /row -->
-	<div class="row">
-		<div class="col-md-12 centered sub">--wakarimi--</div>
-	</div><!-- /row -->
-	<div class="row">
-		<div class="col-md-12 centered sub heart">♡</div>
+  <div class="row col-md-6">
+    <div class="meter level20 blank" data-level="20"></div>
+    <div class="meter level19 blank" data-level="19"></div>
+    <div class="meter level18 blank" data-level="18"></div>
+    <div class="meter level17 blank" data-level="17"></div>
+    <div class="meter level16 blank" data-level="16"></div>
+    <div class="meter level15 blank" data-level="15"></div>
+    <div class="meter level14 blank" data-level="14"></div>
+    <div class="meter level13 current_level" data-level="13"></div>
+    <div class="meter level12" data-level="12"></div>
+    <div class="meter level11" data-level="11"></div>
+    <div class="meter level10" data-level="10"></div>
+    <div class="meter level9" data-level="9"></div>
+    <div class="meter level8" data-level="8"></div>
+    <div class="meter level7" data-level="7"></div>
+    <div class="meter level6" data-level="6"></div>
+    <div class="meter level5" data-level="5"></div>
+    <div class="meter level4" data-level="4"></div>
+  </div>
+	<div id="counter" class="col-md-6 centered count">
+	  <%= render :partial =>  "count" %></div>
 	</div><!-- /row -->
 </div> <!-- /container -->
 
