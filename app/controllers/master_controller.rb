@@ -17,7 +17,19 @@ class MasterController < ApplicationController
     @cheers = Player.now_playing_player.cheers
     @users = User.all.sort{|a, b| b.cheers.count <=> a.cheers.count }
     
-    status = {counter: @cheers.count, step_status: -1}
+    to = Time.now
+    from = to.ago(15)
+    cheer_step_a_minute = @cheers.where(created_at: from..to).size
+    
+    if cheer_step_a_minute >= 2
+      step_status = 1
+    elsif cheer_step_a_minute == 0
+      step_status = -1
+    elsif cheer_step_a_minute == 1
+      step_status = 0
+    end
+
+    status = {counter: @cheers.count, step_status: step_status}
     render :json => status and return
   end
 
