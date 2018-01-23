@@ -28,15 +28,19 @@ function refresh(){
           var current_level;
           current_level = $(".current_level").data("level");
           if(step_status == "1"){
-            $(".current_level").removeClass("current_level");
-            current_level += 1;
-            $(".level"+current_level).addClass("current_level");
-            $(".level"+current_level).removeClass("blank");
+            if($(".current_level").data("level") != $(".max").data("level")){
+              $(".current_level").removeClass("current_level");
+              current_level += 1;
+              $(".level"+current_level).addClass("current_level");
+              $(".level"+current_level).removeClass("blank");
+            }
           } else if(step_status == "-1"){
-            $(".current_level").addClass("blank");
-            $(".current_level").removeClass("current_level");
-            current_level = current_level - 1;
-            $(".level"+current_level).addClass("current_level");
+            if($(".current_level").data("level") != $(".min").data("level")){
+              $(".current_level").addClass("blank");
+              $(".current_level").removeClass("current_level");
+              current_level = current_level - 1;
+              $(".level"+current_level).addClass("current_level");
+            }
           };
           
           $("#counter").text(counter);
@@ -59,7 +63,7 @@ refresh();
 <br><br><br>
 <div class="container main">
   <div class="row col-md-6">
-    <div class="meter level20 blank" data-level="20"></div>
+    <div class="meter level20 blank max" data-level="20"></div>
     <div class="meter level19 blank" data-level="19"></div>
     <div class="meter level18 blank" data-level="18"></div>
     <div class="meter level17 blank" data-level="17"></div>
@@ -75,7 +79,7 @@ refresh();
     <div class="meter level7" data-level="7"></div>
     <div class="meter level6" data-level="6"></div>
     <div class="meter level5" data-level="5"></div>
-    <div class="meter level4" data-level="4"></div>
+    <div class="meter level4 min" data-level="4"></div>
   </div>
 	<div id="counter" class="col-md-6 centered count">
 	  <%= render :partial =>  "count" %></div>
