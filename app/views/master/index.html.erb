@@ -60,9 +60,9 @@ refresh();
 </div> <!-- /container -->
 
 <% if @now_playing_player %>
-<br><br><br>
+<br><br><br><br><br>
 <div class="container main">
-  <div class="row col-md-6">
+  <div class="row col-md-4 col-md-offset-2">
     <div class="meter level20 blank max" data-level="20"></div>
     <div class="meter level19 blank" data-level="19"></div>
     <div class="meter level18 blank" data-level="18"></div>
@@ -81,6 +81,7 @@ refresh();
     <div class="meter level5" data-level="5"></div>
     <div class="meter level4 min" data-level="4"></div>
   </div>
+  <div class="col-md-12 centered sub heart">♡</div>
 	<div id="counter" class="col-md-6 centered count">
 	  <%= render :partial =>  "count" %></div>
 	</div><!-- /row -->

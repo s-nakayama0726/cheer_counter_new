@@ -1,22 +1,3 @@
-
-
-<script type="text/javascript">
-$(function(){
-    $(".wakarimi-btn").on({
-        "click":function(){
-            $("#sorena").addClass("animated bounceOutUp");
-            setTimeout(function(){
-        		  $("#sorena").removeClass("animated bounceOutUp");
-    		    },1000);
-        },
-        "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend":function(){
-            $("#sorena").removeClass("animated bounceOutUp");
-        }
-    });
-});
-</script>
-
-
 <div id="client_contents">
 
 	<nav class="navbar navbar-default" role="navigation">
@@ -47,14 +28,6 @@ $(function(){
   <% player = Player.now_playing_player %>
 	 <%= session[:user_name] %> さん！<br>
 	ようこそガチ恋ガーデンへ！<br>
-	<hr>
-	現在プレイ中のオタク：<br>
-	<% if player %>
-	  <%= player.name %><br>
-	  ( 現在の獲得分かりみ数　<%= player.cheers.count %>  )<br> 
-	<% else %>
-	  現在準備中です。プレイ開始まで少々お待ちください。
-	<% end %>
 	<hr>
 	現在参加中のオタク：<br>
 	<% users.each_with_index do |user, idx| %>
@@ -92,11 +65,13 @@ $(function(){
 	    			<div class="button__holder">
     				<%= form_tag(client_post_cheer_path, :remote => true ) do %>
 					<%= hidden_field_tag "authenticity_token", form_authenticity_token %>
-	    				<button type="submit" class="wakarimi-btn">♡</button>
+	    				<button type="submit" class="wakarimi-btn ripple">♡</button>
 	    			<% end %>
 					</div>
 	    		</div><!-- /col-lg-8 -->
 	    	</div><!-- /row -->
 	    </div>
 	</div>
+	
+	<script src="/assets/js/touchpoint.js"></script>
 </div>
