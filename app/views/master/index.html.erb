@@ -15,40 +15,64 @@ function get_status(){
     });
 }
 
-
-function refresh(){
-    get_status();
+function ajax_function(){
+  
+    var deferred = new $.Deferred();
+    var elm = document.getElementById("meter_status");
     
     $.ajax({
         url: '/master/get_cheers',
         type: 'GET',
         success: function(json){
           var step_status=json.step_status;
+          var meter_status = elm.getAttribute('data-meter-status');
           var counter = json.counter;
-          var current_level;
-          current_level = $(".current_level").data("level");
           if(step_status == "1"){
-            if($(".current_level").data("level") != $(".max").data("level")){
-              $(".current_level").removeClass("current_level");
-              current_level += 1;
-              $(".level"+current_level).addClass("current_level");
-              $(".level"+current_level).removeClass("blank");
-            }
+            elm.setAttribute('data-meter-status', Number(meter_status) + 1);
           } else if(step_status == "-1"){
-            if($(".current_level").data("level") != $(".min").data("level")){
-              $(".current_level").addClass("blank");
-              $(".current_level").removeClass("current_level");
-              current_level = current_level - 1;
-              $(".level"+current_level).addClass("current_level");
-            }
+            elm.setAttribute('data-meter-status', Number(meter_status) - 1);
           };
-          
           $("#counter").text(counter);
+          deferred.resolve();
         }
     });
     
-    setTimeout(refresh, 3000);
-    count++;
+    return deferred;
+}
+
+
+function refresh(){
+    get_status();
+    var elm = document.getElementById("meter_status");
+    
+    var current_level;
+    var current_level = $(".current_level").data("level");
+    var meter_status = elm.getAttribute('data-meter-status');
+    
+    if(meter_status >= "3"){
+      if($(".current_level").data("level") != $(".max").data("level")){
+        $(".current_level").removeClass("current_level");
+        current_level += 1;
+        $(".level"+current_level).addClass("current_level");
+        $(".level"+current_level).removeClass("blank");
+        elm.setAttribute('data-meter-status', "2");
+      }
+    } else if(meter_status <= "0"){
+      if($(".current_level").data("level") != $(".min").data("level")){
+        $(".current_level").addClass("blank");
+        $(".current_level").removeClass("current_level");
+        current_level = current_level - 1;
+        $(".level"+current_level).addClass("current_level");
+        elm.setAttribute('data-meter-status', "2");
+      }
+    }
+     
+    var deferred = ajax_function();
+    
+    deferred.done(function(){
+      setTimeout(refresh, 3000);
+      count++;
+    });
 }
 refresh();
 });
@@ -58,6 +82,7 @@ refresh();
 <div class="container">
 
 </div> <!-- /container -->
+<div id="meter_status" class="meter_status" data-meter-status="2" hidden></div>
 
 <% if @now_playing_player %>
 <div class="container main">
@@ -79,7 +104,8 @@ refresh();
       <div class="meter level7" data-level="7"></div>
       <div class="meter level6" data-level="6"></div>
       <div class="meter level5" data-level="5"></div>
-      <div class="meter level4 min" data-level="4"></div>
+      <div class="meter level4 " data-level="4"></div>
+      <div class="meter level3 min" data-level="3" hidden></div>
     </div>
     <div class="col-md-1 centered sub heart">♡　</div>
   	<div id="counter" class="col-md-5 count">
