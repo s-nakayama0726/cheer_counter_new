@@ -31,7 +31,7 @@ class MasterController < ApplicationController
     tweets.each do |tw|
       if player
         cheer = player.cheers.build
-        cheer.user_id = 1
+        cheer.user_id = User.first.id
         cheer.save
       end
     end
