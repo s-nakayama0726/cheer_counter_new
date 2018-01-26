@@ -56,6 +56,8 @@ function refresh(){
         $(".level"+current_level).addClass("current_level");
         $(".level"+current_level).removeClass("blank");
         elm.setAttribute('data-meter-status', "2");
+      } else {
+        elm.setAttribute('data-meter-status', "2");
       }
     } else if(meter_status <= "0"){
       if($(".current_level").data("level") != $(".min").data("level")){
@@ -63,6 +65,8 @@ function refresh(){
         $(".current_level").removeClass("current_level");
         current_level = current_level - 1;
         $(".level"+current_level).addClass("current_level");
+        elm.setAttribute('data-meter-status', "2");
+      } else {
         elm.setAttribute('data-meter-status', "2");
       }
     }
