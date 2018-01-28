@@ -52,14 +52,12 @@ class ManageController < ApplicationController
     
     cheer_data = []
     hours = []
-    (7..1).each do | idx |
-    	idx2 = idx+1
-    	cheer_data << Cheer.where(:created_at => idx2.hour.ago..idx.hour.ago).count
-    	hours << idx.hour.ago.strftime("%H：%M")
+    event_start_time = Time.parse("2018/01/27 14:15:00")
+    (event_start_time.to_i..Time.parse("2018/01/27 20:15:00").to_i).step(60*15).each do | idx |
+      idx2 = Time.at(idx).ago(60*15)
+    	cheer_data << Cheer.where(:created_at => idx2..Time.at(idx)).count
+    	hours << idx.strftime("%H：%M")
     end
-    cheer_data << Cheer.where(:created_at => 1.hour.ago..Time.now).count
-    hours << 1.hour.ago.strftime("%H：%M")
-    hours << Time.now.strftime("%H：%M")
     
     # グラフ（チャート）を作成 
     @event_chart = LazyHighCharts::HighChart.new("graph") do |c|
